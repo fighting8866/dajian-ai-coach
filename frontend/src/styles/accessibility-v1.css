@@ -1,0 +1,135 @@
+/**
+ * 无障碍与键盘可达性 V1（仅展示与语义辅助，不改业务逻辑）
+ * 需在 micro-interactions-v1 之后引入，用于统一、加粗 :focus-visible。
+ */
+
+/* —— 仅屏幕阅读器可见 —— */
+.a11y-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* —— 跳过导航：键盘用户直达主内容 —— */
+.a11y-skip-link {
+  position: absolute;
+  left: 12px;
+  top: -120px;
+  z-index: 10000;
+  padding: 10px 18px;
+  background: var(--ui-surface);
+  border: 2px solid var(--ui-accent);
+  border-radius: var(--ui-radius-md);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--ui-text-primary);
+  text-decoration: none;
+  box-shadow: var(--ui-shadow-card);
+  transition: top 0.15s ease;
+}
+
+.a11y-skip-link:focus,
+.a11y-skip-link:focus-visible {
+  top: 12px;
+  outline: none;
+}
+
+/* —— 路由链接 / 文字链接：焦点清晰可见 —— */
+a:focus-visible,
+.app-shell-logo:focus-visible,
+.app-shell-nav-item:focus-visible {
+  outline: none;
+  border-radius: var(--ui-radius-sm);
+  box-shadow: var(--ui-focus-ring);
+}
+
+.auth-link:focus-visible {
+  outline: none;
+  border-radius: var(--ui-radius-sm);
+  box-shadow: var(--ui-focus-ring);
+}
+
+/* —— 按钮：与微交互协调，键盘环更清晰 —— */
+.el-button:focus-visible {
+  outline: 2px solid var(--ui-accent);
+  outline-offset: 2px;
+}
+
+.el-button.is-link:focus-visible,
+.el-button.is-text:focus-visible {
+  outline-offset: 3px;
+}
+
+/* —— 输入类：原生 textarea —— */
+.el-textarea__inner:focus-visible {
+  outline: 2px solid var(--ui-accent);
+  outline-offset: 2px;
+}
+
+/* —— Element Plus 行内输入/数字框（与按钮同级可见焦点） —— */
+.el-input__inner:focus-visible {
+  outline: 2px solid var(--ui-accent);
+  outline-offset: 1px;
+  border-radius: 4px;
+}
+
+/* —— 折叠面板标题（键盘 Tab 可达时） —— */
+.el-collapse-item__header:focus-visible {
+  outline: 2px solid var(--ui-accent);
+  outline-offset: 2px;
+  border-radius: var(--ui-radius-sm);
+}
+
+/* —— 单选 / 分段按钮 —— */
+.el-radio__input.is-checked + .el-radio__inner,
+.el-radio__input + .el-radio__inner {
+  transition: box-shadow var(--ui-transition-fast);
+}
+
+.el-radio__original:focus-visible + .el-radio__inner {
+  box-shadow: var(--ui-focus-ring);
+}
+
+.el-radio-button__original-radio:focus-visible + .el-radio-button__inner {
+  box-shadow: var(--ui-focus-ring);
+  z-index: 2;
+}
+
+/* —— 复选框 —— */
+.el-checkbox__original:focus-visible + .el-checkbox__inner {
+  box-shadow: var(--ui-focus-ring);
+  border-radius: var(--ui-radius-sm);
+}
+
+/* —— 开关 —— */
+.el-switch:focus-visible {
+  outline: none;
+  box-shadow: var(--ui-focus-ring);
+  border-radius: 999px;
+}
+
+/* —— 标签页 —— */
+.el-tabs__item:focus-visible {
+  outline: 2px solid var(--ui-accent);
+  outline-offset: 2px;
+  border-radius: var(--ui-radius-sm);
+}
+
+/* —— details/summary（训练页调试区等） —— */
+.training-page details summary:focus-visible {
+  outline: 2px solid var(--ui-accent);
+  outline-offset: 2px;
+  border-radius: var(--ui-radius-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .a11y-skip-link {
+    transition: none;
+  }
+}

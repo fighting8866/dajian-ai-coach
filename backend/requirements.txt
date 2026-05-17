@@ -1,0 +1,35 @@
+fastapi==0.118.3
+uvicorn==0.34.2
+pydantic==2.11.4
+sqlalchemy==2.0.40
+python-multipart==0.0.20
+# 认证（api/auth.py）：密码哈希用 bcrypt；JWT 用 PyJWT（import 名为 jwt）
+bcrypt==4.2.1
+PyJWT==2.10.1
+aiofiles==24.1.0
+
+# PPT 解析依赖
+python-pptx==0.6.23
+
+# 文档理解增强 V1：PDF 文本层（basic / markitdown 回退）
+pypdf>=5.0.0
+
+# 可选：PDF → Markdown（设置 DOCUMENT_PARSER_PROVIDER=markitdown）
+# pip install 'markitdown[pdf]'
+
+# Windows 下 .ppt 转换依赖
+pywin32==306; sys_platform == "win32"
+
+# 音频离线分析依赖
+faster-whisper
+pydub
+librosa
+soundfile
+
+# 视觉离线分析依赖（第一版仍使用 MediaPipe Solutions API）
+mediapipe==0.10.21
+
+# 注释说明：
+# - .pptx 解析依赖 python-pptx
+# - Windows 下 .ppt 自动转换需要 pywin32
+# - 推荐安装 Microsoft PowerPoint 以启用自动转换

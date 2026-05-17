@@ -1,0 +1,490 @@
+/**
+ * 品牌化视觉与细节质感 V1（仅展示层）
+ * 需在 element-plus 样式之后、ui-hierarchy-v1 之前引入，以便覆盖组件变量。
+ */
+
+:root {
+  /* 正文 ≥16px；标签 ≥14px */
+  --font-xs: 14px;
+  --font-sm: 15px;
+  --font-base: 16px;
+  --font-md: 17px;
+  --font-lg: 20px;
+  --font-xl: 24px;
+  --font-2xl: 30px;
+
+  /* 统一卡片描边与壳层分隔（避免生硬黑线） */
+  --ui-card-border: #dfe7f2;
+  --ui-shell-divider: #e5eaf3;
+
+  /* —— 品牌与画布 —— */
+  --brand-font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', sans-serif;
+  --brand-font-mono: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', 'Consolas', monospace;
+  --brand-canvas: #eef2f6;
+  --brand-canvas-accent: linear-gradient(180deg, #e8edf4 0%, #f4f6f9 45%, #eef2f6 100%);
+  --brand-hero-tint: #f0f6ff;
+  --brand-border-accent-soft: #c7d7f5;
+
+  /* —— 与信息架构 V1 对齐的语义 token（单源） —— */
+  --ui-text-primary: #0f172a;
+  --ui-text-secondary: #475569;
+  --ui-text-muted: #5b6470;
+  --ui-border: #dfe7f2;
+  --ui-border-strong: #c9d4e8;
+  --ui-surface: #ffffff;
+  --ui-surface-subtle: #f8fafc;
+  --ui-surface-elevated: #ffffff;
+  --ui-accent: #1d4ed8;
+  --ui-accent-hover: #1e40af;
+  --ui-accent-soft: #eff6ff;
+  --ui-accent-muted: #dbeafe;
+  --ui-radius-lg: 14px;
+  --ui-radius-md: 8px;
+  --ui-radius-sm: 6px;
+  --ui-shadow-card: 0 8px 24px rgba(15, 23, 42, 0.06);
+  --ui-shadow-card-hover: 0 10px 28px rgba(15, 23, 42, 0.08);
+  --ui-transition: 0.18s ease;
+  --ui-transition-fast: 0.12s ease;
+
+  /* —— 全站节奏 V1（垂直间距 / 卡片内边距 / 摘要条） —— */
+  --ui-stack-gap: 22px;
+  --ui-stack-gap-sm: 16px;
+  --ui-stack-gap-tight: 14px;
+  --ui-page-pad-top: 12px;
+  --ui-page-pad-bottom: 44px;
+  --ui-page-pad-x: 0;
+  --ui-section-after-title: 14px;
+  --ui-card-pad-y: 22px;
+  --ui-card-pad-x: 24px;
+  --ui-card-pad-sm-y: 16px;
+  --ui-card-pad-sm-x: 18px;
+  --ui-ribbon-pad-y: 10px;
+  --ui-ribbon-pad-x: 14px;
+  --ui-typo-page-title: 32px;
+  --ui-typo-section: 24px;
+  --ui-typo-sub: 16px;
+  --ui-typo-caption: 15px;
+  --ui-aux-surface: #f1f5f9;
+
+  /* —— 功能色（与 Element 对齐，略收敛饱和度） —— */
+  --brand-success: #059669;
+  --brand-success-soft: #ecfdf5;
+  --brand-warning: #d97706;
+  --brand-warning-soft: #fffbeb;
+  --brand-danger: #dc2626;
+  --brand-danger-soft: #fef2f2;
+  --brand-info: #475569;
+  --brand-info-soft: #f1f5f9;
+
+  /* —— 应用壳（供 AppShell 使用） —— */
+  --app-header-bg: var(--ui-surface-elevated);
+  --app-header-border: var(--ui-shell-divider);
+  --app-nav-bg: #f5f7fb;
+  --app-nav-border: var(--ui-shell-divider);
+  --app-nav-active-bg: #e8f0fe;
+  --app-nav-active-text: #1e40af;
+  --app-nav-item-font-size: 18px;
+  --app-nav-item-font-weight: 600;
+  --app-nav-item-active-font-weight: 700;
+  --app-nav-item-min-height: 54px;
+  --app-nav-item-pad-y: 14px;
+  --app-nav-item-pad-x: 22px;
+  --app-nav-item-gap: 10px;
+  --app-nav-pad-y: 24px;
+  --app-nav-pad-x: 16px;
+  --app-main-padding: 22px 28px 44px;
+  /* 桌面主导航加宽，接近成熟后台侧栏（240–280px 区间） */
+  --app-nav-width: 276px;
+  /* 桌面主内容加宽；仍居中、由 .ui-page-frame 截顶。子页主列请对齐此值，避免再套 ~800px 窄版心 */
+  --app-content-max-width: 1360px;
+
+  /* 版式与聚焦环 */
+  --ui-focus-ring: 0 0 0 2px var(--ui-surface), 0 0 0 4px var(--ui-accent-muted);
+  --ui-shadow-inset-accent: inset 3px 0 0 0 var(--ui-accent);
+
+  /* Element Plus：主色与语义色（覆盖默认紫蓝） */
+  --el-color-primary: var(--ui-accent);
+  --el-color-primary-light-3: #3b82f6;
+  --el-color-primary-light-5: #60a5fa;
+  --el-color-primary-light-7: #93c5fd;
+  --el-color-primary-light-8: #bfdbfe;
+  --el-color-primary-light-9: var(--ui-accent-soft);
+  --el-color-primary-dark-2: var(--ui-accent-hover);
+
+  --el-color-success: var(--brand-success);
+  --el-color-warning: var(--brand-warning);
+  --el-color-danger: var(--brand-danger);
+  --el-color-info: var(--brand-info);
+
+  --el-border-radius-base: var(--ui-radius-md);
+  --el-font-family: var(--brand-font-sans);
+}
+
+/* —— 全局基底 —— */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  font-family: var(--brand-font-sans);
+  font-size: var(--font-base);
+  line-height: 1.6;
+  color: var(--ui-text-primary);
+  background: var(--brand-canvas);
+}
+
+.muted {
+  color: var(--ui-text-muted);
+}
+
+/* 业务卡片统一底座（可选与 .ui-surface 叠用或逐步替换） */
+.ui-card-standard {
+  padding: var(--ui-card-pad-y) var(--ui-card-pad-x);
+  border-radius: var(--ui-radius-lg);
+  border: 1px solid var(--ui-card-border);
+  background: var(--ui-surface);
+  box-shadow: var(--ui-shadow-card);
+  box-sizing: border-box;
+}
+
+/* —— 按钮轻量质感（不替代 Element，仅补过渡与 focus） —— */
+.el-button {
+  transition: background-color var(--ui-transition), border-color var(--ui-transition),
+    color var(--ui-transition), box-shadow var(--ui-transition-fast);
+}
+
+.el-button:focus-visible {
+  outline: 2px solid var(--ui-accent-muted);
+  outline-offset: 2px;
+}
+
+.el-button.is-disabled,
+.el-button.is-disabled:hover {
+  opacity: 0.55;
+}
+
+.el-button--primary {
+  font-weight: 600;
+}
+
+.el-button {
+  font-size: var(--font-md);
+  min-height: 40px;
+  padding: 10px 18px;
+}
+
+.el-button--small {
+  font-size: var(--font-sm);
+  min-height: 36px;
+  padding: 8px 16px;
+}
+
+.el-button--large {
+  font-size: 1.125rem;
+  min-height: 46px;
+  padding: 12px 22px;
+}
+
+/* —— 页面标题区（可选包裹） —— */
+.ui-page-header {
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.ui-page-header__eyebrow {
+  margin: 0 0 6px;
+  font-size: var(--font-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ui-text-muted);
+}
+
+/* —— 区块标题（与 ui-page-title 区分：页面内 section） —— */
+.ui-section-title {
+  margin: 0 0 8px;
+  font-size: var(--ui-typo-section);
+  font-weight: 700;
+  color: var(--ui-text-primary);
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+}
+
+.ui-section-sub {
+  margin: 0 0 var(--ui-section-after-title);
+  font-size: var(--ui-typo-sub);
+  color: var(--ui-text-secondary);
+  line-height: 1.65;
+}
+
+/* —— 面板变体（与 .ui-surface 叠用） —— */
+.ui-surface.ui-panel--hero {
+  background: linear-gradient(145deg, var(--ui-surface) 0%, var(--brand-hero-tint) 100%);
+  border-color: var(--brand-border-accent-soft);
+  transition: box-shadow var(--ui-transition);
+}
+
+.ui-surface.ui-panel--hero:hover {
+  box-shadow: var(--ui-shadow-card-hover);
+}
+
+.ui-card-summary {
+  padding: var(--ui-card-pad-y) var(--ui-card-pad-x);
+  border-radius: var(--ui-radius-lg);
+  border: 1px solid var(--ui-card-border);
+  background: var(--ui-surface);
+  box-shadow: var(--ui-shadow-card);
+}
+
+.ui-card-metric {
+  padding: var(--ui-card-pad-sm-y) var(--ui-card-pad-sm-x);
+  border-radius: var(--ui-radius-md);
+  border: 1px solid var(--ui-border);
+  background: var(--ui-surface-subtle);
+}
+
+/* 主页面在 Shell 内的垂直留白（与侧栏对齐，避免双重大边距） */
+.ui-page-shell-inset {
+  padding: var(--ui-page-pad-top) var(--ui-page-pad-x) var(--ui-page-pad-bottom);
+  box-sizing: border-box;
+}
+
+/* 高频操作区：统一换行与间距 */
+.ui-action-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 12px;
+}
+
+.ui-action-row .el-button {
+  margin: 0;
+}
+
+/* —— 提示块 / 空状态 —— */
+.ui-hint {
+  padding: 12px 14px;
+  border-radius: var(--ui-radius-md);
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--ui-text-secondary);
+  background: var(--brand-info-soft);
+  border: 1px solid var(--ui-border);
+}
+
+.ui-empty {
+  padding: 28px 20px;
+  border-radius: var(--ui-radius-lg);
+  border: 1px dashed var(--ui-border-strong);
+  background: var(--ui-surface-subtle);
+  color: var(--ui-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+  text-align: center;
+}
+
+/* —— 专项标签（与业务 key 对应） —— */
+.ui-tag--focus-lang {
+  border-color: #93c5fd !important;
+  background: #eff6ff !important;
+  color: #1e3a8a !important;
+}
+
+.ui-tag--focus-posture {
+  border-color: #6ee7b7 !important;
+  background: #ecfdf5 !important;
+  color: #065f46 !important;
+}
+
+.ui-tag--focus-qa {
+  border-color: #c4b5fd !important;
+  background: #f5f3ff !important;
+  color: #5b21b6 !important;
+}
+
+.ui-tag--focus-content {
+  border-color: #fcd34d !important;
+  background: #fffbeb !important;
+  color: #92400e !important;
+}
+
+.ui-tag--focus-none {
+  border-color: var(--ui-border) !important;
+  background: var(--ui-surface-subtle) !important;
+  color: var(--ui-text-secondary) !important;
+}
+
+/* —— 折叠区 header 悬停 —— */
+.ui-aux-collapse .el-collapse-item__header {
+  transition: background-color var(--ui-transition-fast);
+}
+
+.ui-aux-collapse .el-collapse-item__header:hover {
+  background: var(--ui-surface-subtle);
+}
+
+.el-radio-button__inner {
+  transition: background-color var(--ui-transition), border-color var(--ui-transition),
+    color var(--ui-transition), box-shadow var(--ui-transition-fast);
+}
+
+/* —— 页面内容区宽度（与 AppShell 主栏对齐） —— */
+.ui-page-frame {
+  width: 100%;
+  max-width: var(--app-content-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+/* 收口：Shell 主区与典型页面根节点，防止 flex 子项把横向布局撑破 */
+.app-shell-main {
+  box-sizing: border-box;
+}
+
+.history-page,
+.training-page,
+.settings-page,
+.profile-page {
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* 双栏 / 工作台外层：统一可缩、不顶出父级 */
+.ui-l-desk-2,
+.training-workbench-desk,
+.training-prep-connector--prep .training-workbench-desk--prep,
+.history-page--admin-v2 .history-admin-console {
+  box-sizing: border-box;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* 轻量提示块（设置/工作台等复用，减少每页各写一套导致的边界不齐） */
+.ui-callout {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: var(--ui-radius-md);
+  border: 1px solid var(--ui-border);
+  background: var(--ui-surface-subtle);
+  font-size: var(--font-sm, 15px);
+  line-height: 1.6;
+  color: var(--ui-text-secondary);
+  box-sizing: border-box;
+}
+
+.ui-callout--accent {
+  border-color: var(--ui-accent-muted);
+  background: var(--ui-accent-soft);
+  color: var(--ui-text-primary);
+}
+
+/* —— 提示块语义变体（与 el-alert 并存，用于轻量说明） —— */
+.ui-hint--success {
+  background: var(--brand-success-soft);
+  border-color: #a7f3d0;
+  color: var(--ui-text-secondary);
+}
+
+.ui-hint--warning {
+  background: var(--brand-warning-soft);
+  border-color: #fde68a;
+  color: var(--ui-text-secondary);
+}
+
+.ui-hint--danger {
+  background: var(--brand-danger-soft);
+  border-color: #fecaca;
+  color: var(--ui-text-secondary);
+}
+
+.ui-hint--info {
+  background: var(--brand-info-soft);
+  border-color: var(--ui-border);
+  color: var(--ui-text-secondary);
+}
+
+/* —— 信息强度条（工作台顶栏等） —— */
+.ui-tone-strip--accent {
+  background: var(--ui-accent-soft);
+  border-color: var(--ui-accent-muted);
+}
+
+.ui-tone-strip--warning {
+  background: var(--brand-warning-soft);
+  border-color: #fde68a;
+}
+
+.ui-tone-strip--success {
+  background: var(--brand-success-soft);
+  border-color: #a7f3d0;
+}
+
+.ui-tone-strip--muted {
+  background: var(--ui-surface-subtle);
+  border-color: var(--ui-border);
+}
+
+/* —— 训练有效性标签（文案：有效训练 / 无效训练） —— */
+.ui-tag--status-valid {
+  border-color: #86efac !important;
+  background: #ecfdf5 !important;
+  color: #14532d !important;
+}
+
+.ui-tag--status-invalid {
+  border-color: #fdba74 !important;
+  background: #fff7ed !important;
+  color: #9a3412 !important;
+}
+
+.el-link {
+  transition: color var(--ui-transition-fast);
+}
+
+.el-link.el-link--primary:hover {
+  color: var(--ui-accent-hover);
+}
+
+.el-input__wrapper,
+.el-textarea__inner {
+  transition: box-shadow var(--ui-transition-fast), border-color var(--ui-transition-fast);
+}
+
+/* —— 屏幕 / 打印 显隐（报告留档等） —— */
+@media screen {
+  .print-only {
+    display: none !important;
+  }
+}
+
+@media print {
+  .screen-only {
+    display: none !important;
+  }
+
+  .ui-page-shell-inset {
+    padding: 0 !important;
+  }
+
+  .ui-page-frame {
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  body {
+    background: #fff !important;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 14mm 12mm 16mm;
+}

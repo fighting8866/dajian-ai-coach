@@ -1,0 +1,60 @@
+/* 多页复用的轻量页内导航（#anchor 跳转） */
+.ui-inpage-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+  margin: 0 0 var(--ui-stack-gap-tight, 12px);
+  padding: var(--ui-ribbon-pad-y, 10px) var(--ui-ribbon-pad-x, 14px);
+  font-size: var(--ui-typo-sub, 0.88rem);
+  line-height: 1.4;
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-radius-md);
+  background: var(--ui-surface-subtle);
+}
+
+.ui-inpage-nav__link {
+  color: var(--ui-accent, #4f46e5);
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.ui-inpage-nav__link:hover {
+  border-bottom-color: currentColor;
+}
+
+.inpage-nav-target {
+  scroll-margin-top: 0.75rem;
+}
+
+.ui-inpage-nav__link:focus-visible {
+  border-radius: 6px;
+  outline: none;
+  box-shadow: var(--ui-focus-ring, 0 0 0 2px #fff, 0 0 0 4px #6366f1);
+}
+
+.inpage-nav-target:focus-visible {
+  outline: 2px solid var(--ui-accent, #4f46e5);
+  outline-offset: 3px;
+  border-radius: var(--ui-radius-md, 8px);
+}
+
+/* 极窄：减轻锚点条与链接密度，避免多行时整块过高 */
+@media (max-width: 560px) {
+  .ui-inpage-nav {
+    padding: 8px 10px;
+    margin: 0 0 10px;
+    gap: 6px 8px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .ui-inpage-nav {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+  }
+}

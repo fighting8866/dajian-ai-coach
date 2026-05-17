@@ -1,0 +1,1 @@
+"""Ascend standalone service package."""

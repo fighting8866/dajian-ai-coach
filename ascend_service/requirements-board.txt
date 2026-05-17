@@ -1,0 +1,17 @@
+# 仅板侧 ascend_service（视觉为主、无语音上板时）的最小依赖。
+# 若某条在 aarch64 上失败，请按下方「分步安装」处理，勿一次要求全部成功。
+
+fastapi==0.118.3
+uvicorn==0.34.2
+pydantic==2.11.4
+python-multipart==0.0.20
+numpy>=1.23.0,<3
+
+# OpenCV：部分板子 opencv-python-headless 无 wheel 或编译失败。
+# 可二选一：① pip 装 opencv-python  ② apt 装 python3-opencv 后，不再 pip 装 opencv（避免冲突）
+opencv-python>=4.5.0,<5
+
+# MediaPipe：Linux aarch64 上请优先 `pip install mediapipe`（让 pip 选可用 wheel）；
+# 若固定 0.10.21 失败，可尝试 `mediapipe>=0.10.9,<0.11` 或板卡镜像预装版本。
+# 装不上时视觉会退回 Haar，见 services/vision_service.py 与 README「Board」小结。
+mediapipe>=0.10.9,<0.11

@@ -1,0 +1,509 @@
+/**
+ * 信息层级与视觉统一 V1（仅展示层，与业务逻辑无关）
+ * 设计 token 见 brand-theme-v1.css
+ */
+
+.ui-page-title {
+  margin: 0 0 6px;
+  font-size: var(--ui-typo-page-title, 32px);
+  font-weight: 800;
+  color: var(--ui-text-primary);
+  letter-spacing: -0.02em;
+  line-height: 1.22;
+}
+
+.ui-page-sub {
+  margin: 0 0 var(--ui-stack-gap-sm, 14px);
+  font-size: var(--ui-typo-sub, 17px);
+  color: var(--ui-text-secondary);
+  line-height: 1.65;
+}
+
+/* 卡片/区块主标题（页面内 section，可与 .ui-section-title 互换） */
+.ui-card-head {
+  margin: 0 0 10px;
+  font-size: var(--ui-typo-section, 24px);
+  font-weight: 700;
+  color: var(--ui-text-primary);
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+}
+
+/* 仪表盘主列左侧品牌脊线（轻量，不抢内容） */
+.ui-dashboard-spine {
+  padding-left: 14px;
+  border-left: 3px solid var(--ui-accent-muted);
+}
+
+.ui-surface {
+  background: var(--ui-surface);
+  border: 1px solid var(--ui-card-border, var(--ui-border));
+  border-radius: var(--ui-radius-lg);
+  box-shadow: var(--ui-shadow-card);
+  transition: box-shadow var(--ui-transition, 0.18s ease);
+}
+
+.ui-surface--subtle {
+  background: var(--ui-surface-subtle);
+  border-color: var(--ui-card-border, #e2e8f0);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+}
+
+.ui-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-stack-gap, 20px);
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.ui-stack--sm {
+  gap: var(--ui-stack-gap-sm, 14px);
+}
+
+.ui-muted-block {
+  font-size: var(--font-sm, 15px);
+  color: var(--ui-text-secondary);
+  line-height: 1.65;
+}
+
+.ui-aux-collapse {
+  --el-collapse-border-color: var(--ui-card-border, var(--ui-border));
+  border: 1px solid var(--ui-card-border, var(--ui-border));
+  border-radius: var(--ui-radius-lg);
+  overflow: hidden;
+  background: var(--ui-surface);
+}
+
+.ui-aux-collapse .el-collapse-item__header {
+  font-weight: 600;
+  color: var(--ui-text-secondary);
+  padding: 12px 16px;
+}
+
+.ui-aux-collapse .el-collapse-item__wrap {
+  border-top: 1px solid var(--ui-border);
+}
+
+.ui-aux-collapse .el-collapse-item__content {
+  padding: 14px 16px 18px;
+  color: var(--ui-text-secondary);
+  font-size: var(--font-base, 17px);
+  line-height: 1.65;
+}
+
+/* 低频说明 / 附录折叠：统一降权 */
+.ui-aux-collapse--low {
+  background: var(--ui-aux-surface, var(--ui-surface-subtle));
+  border-color: var(--ui-border);
+}
+
+.ui-aux-collapse--low .el-collapse-item__header {
+  font-size: var(--font-md, 18px);
+  font-weight: 600;
+  color: var(--ui-text-secondary);
+  padding: 12px 16px;
+  min-height: 48px;
+  background: transparent;
+}
+
+.ui-aux-collapse--low .el-collapse-item__header:hover {
+  background: var(--ui-surface);
+}
+
+.ui-aux-collapse--low .el-collapse-item__content {
+  padding: 14px 16px 18px;
+  font-size: var(--font-base, 17px);
+  line-height: 1.65;
+  color: var(--ui-text-secondary);
+  background: var(--ui-surface);
+}
+
+/* 紧凑标签（结果/历史行内） */
+.ui-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: var(--font-sm, 15px);
+  line-height: 1.4;
+  border: 1px solid var(--ui-border);
+  background: var(--ui-surface-subtle);
+  color: var(--ui-text-secondary);
+}
+
+.ui-tag--pos {
+  border-color: #86efac;
+  background: var(--brand-success-soft);
+  color: #14532d;
+}
+
+.ui-tag--warn {
+  border-color: #fdba74;
+  background: var(--brand-warning-soft);
+  color: #9a3412;
+}
+
+.ui-tag--neutral {
+  border-color: #e2e8f0;
+  background: #f1f5f9;
+  color: #475569;
+}
+
+/* 主操作区（训练控制等） */
+.ui-controls-dock {
+  padding: 18px 20px;
+}
+
+.ui-controls-dock__title {
+  margin: 0 0 6px;
+  font-size: var(--ui-typo-section, 22px);
+  font-weight: 800;
+  color: var(--ui-text-primary);
+  line-height: 1.25;
+}
+
+.ui-controls-dock__hint {
+  margin: 0 0 14px;
+  font-size: var(--font-base, 17px);
+  line-height: 1.65;
+  color: var(--ui-text-secondary);
+}
+
+.ui-controls-dock__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.ui-controls-dock__buttons .el-button {
+  margin: 0;
+  min-width: 120px;
+}
+
+/* —— 桌面双栏/工作台布局（V1 骨架，子页可挂 .ui-l-desk-2 等；<1280 单列） —— */
+.ui-l-desk-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ui-stack-gap, 22px) 26px;
+  align-items: start;
+  width: 100%;
+}
+
+.ui-l-desk-2 > * {
+  min-width: 0;
+}
+
+@media (min-width: 1280px) {
+  .ui-l-desk-2 {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  }
+
+  /* 训练准备：稳定比例 + minmax(0) 防止子卡溢出顶破父容器 */
+  .ui-l-desk-2.ui-l-desk-2--prep-cols {
+    grid-template-columns: minmax(0, 1.22fr) minmax(0, 1fr);
+    gap: 24px 28px;
+    align-items: start;
+  }
+
+  .ui-l-desk-2--equal {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .ui-l-desk-2--reverse {
+    direction: rtl;
+  }
+
+  .ui-l-desk-2--reverse > * {
+    direction: ltr;
+  }
+}
+
+/* 顶栏式摘要条（可 sticky，勿滥用） */
+.ui-ribbon,
+.ui-ribbon--sticky {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  padding: var(--ui-ribbon-pad-y, 10px) var(--ui-ribbon-pad-x, 14px);
+  margin-bottom: var(--ui-stack-gap-tight, 12px);
+  border-radius: var(--ui-radius-md);
+  background: var(--ui-surface);
+  border: 1px solid var(--ui-border);
+  font-size: 0.9rem;
+}
+
+.ui-ribbon--sticky {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  box-shadow: 0 1px 0 rgba(15, 23, 42, 0.06);
+}
+
+/* 次要的底部/下沉折叠容器（语义类名，与 .ui-aux-collapse 可并用） */
+.ui-sink {
+  margin-top: 8px;
+}
+
+/* 训练中：主内容 + 右栏 + 第二行全宽问答（V2 网格） */
+.training-in-session-outer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    "main"
+    "rail"
+    "qa";
+  gap: var(--ui-stack-gap-sm, 14px) var(--ui-stack-gap, 20px);
+  align-items: start;
+  width: 100%;
+  margin-bottom: 4px;
+}
+
+.training-in-session-outer .training-in-session__main {
+  grid-area: main;
+  min-width: 0;
+}
+
+.training-in-session-outer .training-in-session__rail {
+  grid-area: rail;
+  min-width: 0;
+}
+
+.training-in-session-outer .qa-section.training-qa--session-run {
+  grid-area: qa;
+  min-width: 0;
+}
+
+@media (min-width: 1280px) {
+  .training-in-session-outer {
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+    grid-template-areas:
+      "main rail"
+      "qa  qa";
+  }
+
+  .training-in-session-outer .training-in-session__rail {
+    position: sticky;
+    top: 8px;
+    z-index: 1;
+    align-self: start;
+    max-height: calc(100vh - 16px);
+    overflow: auto;
+    border-radius: var(--ui-radius-md, 10px);
+    border: 1px solid var(--ui-border, #e2e8f0);
+    background: var(--ui-surface-subtle, #f8fafc);
+    box-shadow: 0 1px 0 rgba(15, 23, 42, 0.06);
+    padding: 12px 14px 14px;
+  }
+}
+
+/* 训练准备期双栏 */
+.training-workbench-desk--prep {
+  align-items: start;
+}
+
+@media (min-width: 900px) and (max-width: 1279px) {
+  .training-workbench-desk--prep.ui-l-desk-2--prep-cols {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ui-stack-gap, 22px);
+  }
+
+  .training-workbench-desk--prep .training-desk__ops {
+    order: -1;
+  }
+
+  .training-workbench-desk--prep .training-desk__config {
+    order: 1;
+  }
+}
+
+@media (max-width: 1279px) and (min-width: 900px) {
+  .training-in-session-outer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .training-in-session-outer .training-in-session__rail {
+    order: 0;
+    max-height: none;
+    position: static;
+  }
+
+  .training-in-session-outer .training-in-session__main {
+    order: 1;
+  }
+
+  .training-in-session-outer .qa-section.training-qa--session-run {
+    order: 2;
+  }
+}
+
+@media (max-width: 899px) {
+  .training-in-session-outer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .training-in-session-outer .training-in-session__rail {
+    order: 0;
+    max-height: none;
+    position: static;
+  }
+
+  .training-in-session-outer .training-in-session__main {
+    order: 1;
+  }
+
+  .training-in-session-outer .qa-section.training-qa--session-run {
+    order: 2;
+  }
+}
+
+/* 阶段强调条 */
+.ui-stage-callout {
+  margin: 0 0 14px;
+  padding: 14px 16px;
+  border-radius: var(--ui-radius-md);
+  background: var(--ui-accent-soft);
+  border: 1px solid #bfdbfe;
+}
+
+.ui-stage-callout__k {
+  margin: 0 0 4px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ui-accent);
+}
+
+.ui-stage-callout__action {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ui-text-primary);
+  line-height: 1.45;
+}
+
+.ui-stage-callout__meta {
+  margin: 8px 0 0;
+  font-size: 0.84rem;
+  line-height: 1.5;
+}
+
+/* —— History 页：后台化布局 V2（首屏三段式：摘要 / 工具+趋势 / 列表） —— */
+.history-page--admin-v2 .history-main--admin.ui-stack {
+  gap: var(--ui-stack-gap-sm, 14px);
+}
+
+.history-page--admin-v2 .history-admin-console {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-stack-gap-sm, 16px);
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+@media (min-width: 1280px) {
+  .history-page--admin-v2 .history-admin-console {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.88fr);
+    gap: 20px 24px;
+    align-items: start;
+  }
+
+  .history-page--admin-v2 .history-summary-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px 20px;
+  }
+
+  .history-page--admin-v2 .history-summary-bar__filters {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+    flex: 0 0 auto;
+    justify-content: flex-end;
+    text-align: right;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1279px) {
+  .history-page--admin-v2 .history-summary-bar__metrics {
+    gap: 8px 10px;
+  }
+}
+
+/* —— Report 页：屏幕态 V2（首屏左摘要 / 右工具；正文略加宽） —— */
+@media (min-width: 1100px) {
+  .report-page--screen-v2.ui-page-frame {
+    max-width: min(1320px, 100%);
+  }
+}
+
+@media (min-width: 1280px) {
+  .report-page--screen-v2 .report-hero-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 304px);
+    gap: 20px 24px;
+    align-items: start;
+  }
+
+  .report-page--screen-v2 .report-hero-toolbar {
+    position: sticky;
+    top: 8px;
+    z-index: 1;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1279px) {
+  .report-page--screen-v2 .report-hero-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .report-page--screen-v2 .report-hero-toolbar {
+    order: -1;
+  }
+}
+
+/* —— Home：控制台化 V2（首屏双栏 + 中段指标卡组；与壳层主区对齐） —— */
+.home-page--console-v2.ui-page-frame {
+  max-width: min(1320px, 100%);
+}
+
+@media (min-width: 1280px) {
+  .home-page--console-v2 .home-console-grid {
+    grid-template-columns: minmax(0, 1.12fr) minmax(300px, 420px);
+    gap: 20px 28px;
+    align-items: start;
+  }
+}
+
+/* Shell：侧栏宽度与菜单 token 在 brand-theme --app-nav-*；主区内边距 --app-main-padding */
+@media (max-width: 899px) {
+  .app-shell-main {
+    padding: 16px 16px 36px;
+  }
+}
+
+/* 报告留档打印：避免页内误用 .ui-surface 时带阴影进 PDF */
+@media print {
+  .report-page--brand-v1 .ui-surface,
+  .report-page--brand-v1 .ui-surface--subtle {
+    box-shadow: none !important;
+    background: transparent !important;
+    border: none !important;
+  }
+}
